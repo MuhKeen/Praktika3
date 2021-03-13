@@ -16,41 +16,38 @@ namespace Praktika3
     {
       InitializeComponent();
     }
-   
+    double MF(double x, double xmod)
+    {
+      double y;
+      if (x < 0) y = -1;
+      else if ((x >= 0) && (x < 5)) y = 2 * xmod;
+      else y = xmod;
+      return y;
+    }
     private void button1_Click(object sender, EventArgs e)
-     {
+    {
       double x = Convert.ToDouble(textBox1.Text);
-      textBox2.Text = "Результат задания 3 программы Минакова Н.Д." + Environment.NewLine;
-      textBox2.Text += "X = " + textBox1.Text + Environment.NewLine;
       int n = 0;
       if (radioButton2.Checked) n = 1;
       else if (radioButton3.Checked) n = 2;
-      double y;
+      double xmod = 0;
       switch (n)
       {
         case 0:
-          if (x < 0) y = -1;
-          else if ((x >= 0) && (x < 5)) y = 2 * Math.Sinh(x);
-          else y = Math.Sinh(x);
-          textBox2.Text += "Y = " + Convert.ToString(y) + Environment.NewLine;
+          xmod = Math.Sinh(x);
           break;
         case 1:
-          if (x < 0) y = -1;
-          else if ((x >= 0) && (x < 5)) y = 2 * Math.Cosh(x);
-          else y = Math.Cosh(x);
-          textBox2.Text += "Y = " + Convert.ToString(y) + Environment.NewLine;
+          xmod = Math.Cosh(x);
           break;
         case 2:
-          if (x < 0) y = -1;
-          else if ((x >= 0) && (x < 5)) y = 2 * Math.Exp(x);
-          else y = Math.Exp(x);
-          textBox2.Text += "Y = " + Convert.ToString(y) + Environment.NewLine;
+          xmod = Math.Exp(x);
           break;
         default:
-          textBox2.Text += "Не решено" + Environment.NewLine;
           break;
       }
-
-     }
+      textBox2.Text = "Результат задания 3 программы Минакова Н.Д." + Environment.NewLine;
+      textBox2.Text += "X = " + textBox1.Text + Environment.NewLine;
+      textBox2.Text += "Y = " + MF(x,xmod) + Environment.NewLine;
     }
+  }
 }
